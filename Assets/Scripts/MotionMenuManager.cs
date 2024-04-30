@@ -1,30 +1,68 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MotionMenuManager : MonoBehaviour
 {
-    public Transform head;
-    public float spawnDistance = 1f;
-    public GameObject menu;
-    public InputActionProperty showButton;
+    public GameObject instructionMenu;
+    private InstructionMenuManager instructionMenuManager;
 
+    public GameObject hmdGO;
+    public GameObject leftHandGO;
+    public GameObject rightHandGO;
+
+    // HMD
+    public TextMeshProUGUI hmdPositionText;
+    public TextMeshProUGUI hmdRotationText;
+
+    // Left Hand
+    public TextMeshProUGUI leftHandPositionText;
+    public TextMeshProUGUI leftHandRotationText;
+
+    // Right Hand
+    public TextMeshProUGUI rightHandPositionText;
+    public TextMeshProUGUI rightHandRotationText;
+
+    // Triggers
+    public TextMeshProUGUI handsSameY;
+    public TextMeshProUGUI headInTheMiddle;
+
+    private Vector3 position;
+    private Quaternion rotation;
+
+    void Awake()
+    {
+        instructionMenuManager = instructionMenu.GetComponent<InstructionMenuManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(showButton.action.WasPressedThisFrame())
-        {
-            menu.SetActive(!menu.activeSelf);
-            menu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
-        }
+        position = hmdGO.transform.position;
+        rotation = hmdGO.transform.rotation;
+        hmdPositionText.text = "Position: " + position.ToString();
+        hmdRotationText.text = "Rotation: " + rotation.eulerAngles.ToString();
 
-        menu.transform.LookAt(new Vector3(head.position.x, menu.transform.position.y, head.position.z));
-        menu.transform.forward *= -1;
+        position = leftHandGO.transform.position;
+        rotation = leftHandGO.transform.rotation;
+        leftHandPositionText.text = "Position: " + position.ToString();
+        leftHandRotationText.text = "Rotation: " + rotation.eulerAngles.ToString();
+
+        position = rightHandGO.transform.position;
+        rotation = rightHandGO.transform.rotation;
+        rightHandPositionText.text = "Position: " + position.ToString();
+        rightHandRotationText.text = "Rotation: " + rotation.eulerAngles.ToString();
+
+        var (headInMiddle, neckDistance) = instructionMenuManager.ValidateHeadInTheMiddle(hmdGO, leftHandGO, rightHandGO);
+        headInTheMiddle.text = $"Head in the middle: {headInMiddle} - distance: {neckDistance}";
+
+        var (handsOnSameY, handsDistance) = instructionMenuManager.ValidateHandsSameY(leftHandGO, rightHandGO);
+        handsSameY.text = $"Hands same Y: {handsOnSameY} - distance: {handsDistance}";
     }
 }
