@@ -3127,7 +3127,6 @@ GameObject:
   - component: {fileID: 1297011196}
   - component: {fileID: 1297011195}
   - component: {fileID: 1297011194}
-  - component: {fileID: 1297011197}
   m_Layer: 0
   m_Name: InstructionMenu
   m_TagString: Untagged
@@ -3221,21 +3220,6 @@ Transform:
   - {fileID: 1330679442}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1297011197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1297011192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 457b859572d46ad41bef9eef7c38bef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  robotConnection: 0
-  sendData: 0
-  robotUrl: 
 --- !u!1 &1330679438
 GameObject:
   m_ObjectHideFlags: 0
