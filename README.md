@@ -24,7 +24,6 @@ When person turn his head it will be seen on screen. Immersive??
 ### Unity constraints
 On Linux you can use only specific video format. For more see: https://docs.unity3d.com/Manual/VideoSources-FileCompatibility.html. 
 
-
 ## Positions
 Ones VRController has connection with robot, it will be send data from head and hands to change position of robot
 
@@ -46,5 +45,18 @@ Ones VRController has connection with robot, it will be send data from head and 
 6. VR app start recieving streaming
 7. VR app in every frame proccess VR position HMD, left and right hand.
 
+## Motion Tracker
+    // Send data to robot
+    // forward vector
+    // left hand position and rotation
+    // right hand position and rotation
+    // head position and rotation
+    // THEN
+    // robot reduce
+    // 1. scale between head and hands
+    // 2. scale between head and floor
+    // end send video streaming
+
 ## Assets
 - hands: https://drive.google.com/file/d/10b39IekUdpBHlcTslZ-BlNRyH5uqPUe1/view
+- 
