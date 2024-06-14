@@ -2971,6 +2971,21 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1188140745}
+    - target: {fileID: 3363735365380137286, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363735365380137286, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224583647233518143, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4803490186270090503, guid: a0828b2befe9aad6f93b46414c90123c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3009,6 +3024,21 @@ PrefabInstance:
     - target: {fileID: 4803490186270090503, guid: a0828b2befe9aad6f93b46414c90123c,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803490186270090503, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803490186270090503, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803490186270090503, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4803490186270090503, guid: a0828b2befe9aad6f93b46414c90123c,
@@ -3075,6 +3105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VideoCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825276170603870895, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3512,7 +3547,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
