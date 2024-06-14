@@ -11,11 +11,23 @@ Melman record world by one camera with FoV XYZ
 VRController will be displayed this video full screen.
 When person turn his head it will be seen on screen. Immersive??
 
-## Stream video
+!!! UnAvailable now: https://forum.unity.com/threads/streaming-live-video-from-desktop-over-web-into-unity-vnc-obs-ip-camera-mjpeg.1313616/
+> Use RTC instead:
+- https://webrtc.github.io/samples/
+- https://webrtc.org/getting-started/peer-connections
+
+> Inspirated by:
+- https://github.com/gpvigano/VidStreamComp 
+
+
+### Stream video
 1. Clone repository `git clone https://github.com/jacksonliam/mjpg-streamer`
 2. Follow the building and instalation instuction
 3. Set Robot IP address in Unity Video Component `VRScene > Video > VideoPlayer > VideoPlayer > URL` to `http://192.168.X.Y:8080/?action=stream`
 4. Start stream on robot `./mjpg_streamer -i "input_uvc.so" -o "output_http.so -p 8080"`
+
+### Unity constraints
+On Linux you can use only specific video format. For more see: https://docs.unity3d.com/Manual/VideoSources-FileCompatibility.html. 
 
 
 ## Positions

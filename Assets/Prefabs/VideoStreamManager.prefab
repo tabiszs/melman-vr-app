@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5742787973075884457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5205458092549890554}
+  - component: {fileID: 8046128436760237283}
+  - component: {fileID: 9105863747017095509}
+  - component: {fileID: 2106639393192731221}
+  - component: {fileID: 6303560693513482662}
+  - component: {fileID: 7743293894437501364}
+  m_Layer: 0
+  m_Name: VideoStreamManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5205458092549890554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742787973075884457}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8046128436760237283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742787973075884457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8c48e5ea9601742b0310308145aa26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoStream: {fileID: 2106639393192731221}
+  sharedMaterial: 0
+  toggleImage: 0
+  frameImage: {fileID: 0}
+  imageResizer: {fileID: 7743293894437501364}
+--- !u!114 &9105863747017095509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742787973075884457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f868f124db04cd45b041bf265a1a9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoStream: {fileID: 2106639393192731221}
+  sharedMaterial: 0
+  frameRenderer: {fileID: 0}
+--- !u!114 &2106639393192731221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742787973075884457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc96caa64835b864a95c9a6f48d306ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoStartVideo: 1
+  url: http://localhost:8080?action=stream
+  login: 
+  password: 
+  authentication: Basic
+  restartOnError: 1
+  readTimeout: 0.2
+  giveUpTimeout: 10
+  reconnectTimeout: 1
+--- !u!114 &6303560693513482662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742787973075884457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3c0ddb2acaceb4aa5416057ffdca38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 0}
+  stopButton: {fileID: 0}
+  pauseButton: {fileID: 0}
+  urlInputField: {fileID: 0}
+  loginInputField: {fileID: 0}
+  passwordInputField: {fileID: 0}
+  ipCameraStream: {fileID: 2106639393192731221}
+  connectionFailedColor: {r: 1, g: 0, b: 0, a: 1}
+  connectionSucceededColor: {r: 0, g: 0.6985294, b: 0, a: 1}
+  defaultSettings:
+    videoUrl: http://localhost:8080/
+    login: 
+    password: 
+  autoStartStreaming: 0
+--- !u!114 &7743293894437501364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742787973075884457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ea072399f00f64892afbfd88d71e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -17,7 +17,7 @@ public class ActivateVideo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        video.SetActive(true);
     }
 
     // Update is called once per frame
