@@ -512,6 +512,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2106639393192731221, guid: cdfd969e6e8d6381381aac9206fdca4d,
+        type: 3}
+      propertyPath: url
+      value: http://192.168.43.232:8080?action=stream
+      objectReference: {fileID: 0}
     - target: {fileID: 5205458092549890554, guid: cdfd969e6e8d6381381aac9206fdca4d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2984,6 +2989,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267663652473549982, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267663652473549982, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267663652473549982, guid: a0828b2befe9aad6f93b46414c90123c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4803490186270090503, guid: a0828b2befe9aad6f93b46414c90123c,
         type: 3}

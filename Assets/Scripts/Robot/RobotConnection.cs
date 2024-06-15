@@ -6,7 +6,7 @@ public class RobotConnection : MonoBehaviour
 {
     public bool sendData = false;
 
-    public static string url = "localhost:5000";
+    public static string url = "192.168.43.232:5000";
 
     private string startTracking = $"{url}/start-tracking";
     private string frames = $"{url}/frames";
