@@ -14,6 +14,9 @@ Melman VR App was developed in Unity 2022.3.25f.
 ![Streaming mode in VR app](./image.png)
 
 ## Melman VR Backend
+
+Backend source code is placed in: `Backend/`
+
 [Details how to run backend](./Backend/README.md)
 
 [Virtual Melman T-pose](https://github.com/tabiszs/melson-vr-controller/assets/92331225/7680d4f9-b6d5-45c5-b501-b8b442c65219)
