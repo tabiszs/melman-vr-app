@@ -9,11 +9,14 @@ This repository cover:
 
 Melman VR App was developed in Unity 2022.3.25f.
 
+[Initial mode in VR app](https://github.com/tabiszs/melson-vr-controller/assets/92331225/253ba4fc-8e75-4eda-bd7c-de929059c179)
+
 ![Streaming mode in VR app](./image.png)
 
 ## Melman VR Backend
-
 [Details how to run backend](./Backend/README.md)
+
+[Virtual Melman T-pose](https://github.com/tabiszs/melson-vr-controller/assets/92331225/7680d4f9-b6d5-45c5-b501-b8b442c65219)
 
 ## MJPEG-Streamer
 Melman record world by one camera with FoV XYZ
