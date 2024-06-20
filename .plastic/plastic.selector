@@ -1,0 +1,4 @@
+repository "melson-vr-controller@tabiszs@cloud"
+  path "/"
+    br "/main"
+    co "/main"

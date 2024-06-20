@@ -11,12 +11,18 @@ Melman record world by one camera with FoV XYZ
 VRController will be displayed this video full screen.
 When person turn his head it will be seen on screen. Immersive??
 
-## Stream video
+> Inspiration
+- https://github.com/gpvigano/VidStreamComp 
+
+
+### Stream video
 1. Clone repository `git clone https://github.com/jacksonliam/mjpg-streamer`
 2. Follow the building and instalation instuction
-3. Set Robot IP address in Unity Video Component `VRScene > Video > VideoPlayer > VideoPlayer > URL` to `http://192.168.X.Y:8080/?action=stream`
+3. Set Robot IP address in Unity Video Component `VRScene > VideoStreamManager > IPCameraStream > URL` to `http://192.168.X.Y:8080/?action=stream`. It uses `Codes Motion JPEG Video (MJPG)`
 4. Start stream on robot `./mjpg_streamer -i "input_uvc.so" -o "output_http.so -p 8080"`
 
+### Unity constraints
+On Linux you can use only specific video format. For more see: https://docs.unity3d.com/Manual/VideoSources-FileCompatibility.html. 
 
 ## Positions
 Ones VRController has connection with robot, it will be send data from head and hands to change position of robot
@@ -39,5 +45,18 @@ Ones VRController has connection with robot, it will be send data from head and 
 6. VR app start recieving streaming
 7. VR app in every frame proccess VR position HMD, left and right hand.
 
+## Motion Tracker
+    // Send data to robot
+    // forward vector
+    // left hand position and rotation
+    // right hand position and rotation
+    // head position and rotation
+    // THEN
+    // robot reduce
+    // 1. scale between head and hands
+    // 2. scale between head and floor
+    // end send video streaming
+
 ## Assets
 - hands: https://drive.google.com/file/d/10b39IekUdpBHlcTslZ-BlNRyH5uqPUe1/view
+- 

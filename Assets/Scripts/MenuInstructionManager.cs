@@ -9,17 +9,24 @@ public class InstructionMenuManager : MonoBehaviour
     public GameObject hmdGO;
     public GameObject leftHandGO;
     public GameObject rightHandGO;
-    public GameObject panel;   
+    public GameObject panel;
 
     public InputActionProperty leftHandTriggerAction;
     public InputActionProperty rightHandTriggerAction;
 
     private RobotConnection robotConnection;
     private float activationTime = 0;
+    private float minDeltaTime = 2.0f;
 
     private Image panelBackgroundColor;
     private Color inactiveColor = new(0.0f, 0.0f, 0.0f, 0.7f);
     private Color activeColor = new(0.0f, 1.0f, 0.0f, 0.7f);
+
+    private Vector3 position;
+    private Quaternion rotation;
+
+    private float lastFrameTime = -1.0f;
+    private float minFrameDeltaTime = 1.0f; 
 
     void Awake()
     {
@@ -27,21 +34,24 @@ public class InstructionMenuManager : MonoBehaviour
         robotConnection = GetComponent<RobotConnection>();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         var leftTrigger = leftHandTriggerAction.action.ReadValue<float>();
         var rightTrigger = rightHandTriggerAction.action.ReadValue<float>();
         float time = Time.time;
-        float deltaTime = time - activationTime; // > 2 seconds
+        float deltaTime = time - activationTime;
 
-        if (leftTrigger == 1.0f && rightTrigger == 1.0f /*&& robotConnection.robotConnection*/ && deltaTime > 2.0f)
+        if (robotConnection.sendData)
+        {
+            SendFrame();
+        }
+
+        if (leftTrigger == 1.0f && rightTrigger == 1.0f && deltaTime > minDeltaTime)
         {
             if (ValidatePositions())
             {
@@ -50,26 +60,13 @@ public class InstructionMenuManager : MonoBehaviour
                 if (robotConnection.sendData)
                 {
                     panelBackgroundColor.color = activeColor;
+                    SendStart();
                 }
                 else
                 {
                     panelBackgroundColor.color = inactiveColor;
-                }
-                StartCoroutine(VideoRequest(robotConnection.sendData));
+                }                
             }
-        }
-
-        if(robotConnection.sendData)
-        {
-            var headPosition = hmdGO.transform.position;
-            var leftHandPosition = leftHandGO.transform.position;
-            var rightHandPosition = rightHandGO.transform.position;
-            var inputData = new InputData(
-                new Device(headPosition, hmdGO.transform.rotation),                                       
-                new Device(leftHandPosition, leftHandGO.transform.rotation),
-                new Device(rightHandPosition, rightHandGO.transform.rotation)
-            );
-            StartCoroutine(SendData(inputData));
         }
     }
 
@@ -84,7 +81,7 @@ public class InstructionMenuManager : MonoBehaviour
     }
 
     public (bool, float) ValidateHeadInTheMiddle(
-        GameObject hmdGO, GameObject leftHandGO, GameObject rightHandGO )
+        GameObject hmdGO, GameObject leftHandGO, GameObject rightHandGO)
     {
         const float forwardDistanceBetweenHandsAndHead = 0.3f;
         const float headHeight = 0.2f;
@@ -120,46 +117,47 @@ public class InstructionMenuManager : MonoBehaviour
         return (handsOnSameY, handsDistance);
     }
 
-    // Send data to robot
-    // forward vector
-    // left hand position and rotation
-    // right hand position and rotation
-    // head position and rotation
-    // THEN
-    // robot reduce
-    // 1. scale between head and hands
-    // 2. scale between head and floor
-    // end send video streaming
-    IEnumerator SendData(InputData inputData)
+    void SendStart()
     {
-        string jsonToSend = JsonUtility.ToJson(inputData);
-        UnityWebRequest www = UnityWebRequest.PostWwwForm(robotConnection.robotUrl, "");
-        www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonToSend));
-        www.SetRequestHeader("Content-Type", "application/json");
-        yield return www.SendWebRequest();
+        position = hmdGO.transform.position;
+        rotation = hmdGO.transform.rotation;
+        var hmd = new DeviceDto(position, rotation);
+        var preForward = new Vector3(hmdGO.transform.forward.x, 0, hmdGO.transform.forward.z).normalized;
+        var forward = new Vector3Dto(preForward.x, preForward.y, preForward.z);
 
-        if (www.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            Debug.Log("Form upload complete!");
-        }
+        position = leftHandGO.transform.position;
+        rotation = leftHandGO.transform.rotation;
+        var left = new DeviceDto(position, rotation);
+
+        position = rightHandGO.transform.position;
+        rotation = rightHandGO.transform.rotation;
+        var right = new DeviceDto(position, rotation);
+        var input = new FrameDto(forward,hmd, left, right, Time.time);
+        robotConnection.SendStart(input);
     }
 
-    IEnumerator VideoRequest(bool activate)
+    void SendFrame()
     {
-        UnityWebRequest www = UnityWebRequest.Get($"{robotConnection.robotUrl}?activate={activate}");
-        yield return www.SendWebRequest();
+        if(Time.time - lastFrameTime >= minFrameDeltaTime)
+        {
+            lastFrameTime = Time.time;
 
-        if (www.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            Debug.Log("Request for video was proceed");
-        }
+            position = hmdGO.transform.position;
+            rotation = hmdGO.transform.rotation;
+            var hmd = new DeviceDto(position, rotation);
+            var preForward = new Vector3(hmdGO.transform.forward.x, 0, hmdGO.transform.forward.z).normalized;
+            var forward = new Vector3Dto(preForward.x, preForward.y, preForward.z);
+
+            position = leftHandGO.transform.position;
+            rotation = leftHandGO.transform.rotation;
+            var left = new DeviceDto(position, rotation);
+
+            position = rightHandGO.transform.position;
+            rotation = rightHandGO.transform.rotation;
+            var right = new DeviceDto(position, rotation);
+
+            var input = new FrameDto(forward, hmd, left, right, Time.time);
+            robotConnection.SendFrame(input);
+        }        
     }
 }
