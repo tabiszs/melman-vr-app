@@ -1,19 +1,26 @@
-# melson-vr-controller
-VR app for user interface with robot
+# Melman VR
 
+This repository cover:
+1. Melman VR App - for user interface with robot
+2. Melman VR Backend - running on robot
+3. MJPEG-Streamer - running on robot
 
-## Tutorials
-- <[How to Make a VR Game in Unity - PART 1](https://www.youtube.com/watch?v=HhtTtvBF5bI&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=2&ab_channel=ValemTutorials)>
-- <[How to Play VIDEO in Unity - Easy Tutorial (2023)](https://www.youtube.com/watch?v=-XzVq7qIuys&ab_channel=SoloGameDev)>
+## Melman VR App
 
-## Camera
+Melman VR App was developed in Unity 2022.3.25f.
+
+![Streaming mode in VR app](./image.png)
+
+## Melman VR Backend
+
+[Details how to run backend](./Backend/README.md)
+
+## MJPEG-Streamer
 Melman record world by one camera with FoV XYZ
-VRController will be displayed this video full screen.
-When person turn his head it will be seen on screen. Immersive??
+VR app will be displayed this video full screen.
 
-> Inspiration
+> Inspiration of IP Camera in VR
 - https://github.com/gpvigano/VidStreamComp 
-
 
 ### Stream video
 1. Clone repository `git clone https://github.com/jacksonliam/mjpg-streamer`
@@ -30,33 +37,8 @@ Ones VRController has connection with robot, it will be send data from head and 
 ## Communication
 `Project Settings > Player > Configuration > Allow downloads over HTTP = always allowed (unsave)`
 
-## Screens
-1. Wait for connection
-2. Sync with robot. Dialog with instruction how to stay in T pose and which button turn to sync coordinate system with robot.
-3. Play button
-4. Video
-
-## Communication schema
-1. VR app send post request to broker with own IP address
-2. Robot send post request to broker with own IP address
-3. After in every 1 second VR app send get request to get robot IP address
-4. After in every 1 second robot send get request to get VR IP address
-5. After enable trigger from T-pose VR app send activat=true request for video. 
-6. VR app start recieving streaming
-7. VR app in every frame proccess VR position HMD, left and right hand.
-
-## Motion Tracker
-    // Send data to robot
-    // forward vector
-    // left hand position and rotation
-    // right hand position and rotation
-    // head position and rotation
-    // THEN
-    // robot reduce
-    // 1. scale between head and hands
-    // 2. scale between head and floor
-    // end send video streaming
-
-## Assets
+## Assets Source
 - hands: https://drive.google.com/file/d/10b39IekUdpBHlcTslZ-BlNRyH5uqPUe1/view
-- 
+
+## Useful Tutorials
+- <[How to Make a VR Game in Unity - PART 1](https://www.youtube.com/watch?v=HhtTtvBF5bI&list=PLpEoiloH-4eP-OKItF8XNJ8y8e1asOJud&index=2&ab_channel=ValemTutorials)>
